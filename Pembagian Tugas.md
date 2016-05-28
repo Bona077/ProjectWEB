@@ -7,3 +7,10 @@ Pembagian Tugas Minggu Pertama:
 
 - bikin tabel database di oracle -> bersama-sama
 - gambar ER Diagram -> Wahyuning Ndaru T.
+
+
+Pembagian tugas Minggu 2:
+- jdbc dan method-method    -> Wahyuning Ndaru T.
+- kondisi tanpa login  	    -> Wahyuning Ndaru T.
+- login sebagai mahasiswa   -> Bonaventura B.A
+- login sebagai dosen/admin -> Tarsisisus Marianus Kam
