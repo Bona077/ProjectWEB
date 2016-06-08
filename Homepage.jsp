@@ -1,55 +1,56 @@
+<%@page import="Servlet.*"%>
+<%@page import="Method.*"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>KRS Online</title>
+        <link type="text/css" rel="stylesheet" href="css/mainstyle.css">
     </head>
     <body>
-        <div class="header">
-            <table border="0" cellpadding="0" align="center">
-                <tr>
-                    <th>
-                        <img src="images/logo.png" width="160" height="160" alt="logo"/>
-                    </th>
-                    <th>
-                        <h1 align="center">Universitas Sanata Dharma</h1>
-                        <h2 align="center">KRS ONLINE</h2>
-                    </th>
-                </tr>
-            </table>
-            <div id="sub-right" align="right">
-                <form action="/ProjectWEB/Homepage.jsp" method="POST">
+        <% ArrayList<MataKuliah> list = new ArrayList<>();
+            list = (ArrayList<MataKuliah>) session.getAttribute("mtkList");
+        %>
+        <div id="container">
+            <div id="header">
+                <logo>
+                    <img src="images/logo.png" width="120" height="120" alt="logo"/>
+                </logo>
+                <h1 align="center">Universitas Sanata Dharma</h1>
+                <h2 align="center">KRS ONLINE</h2>
+            </div>
+            <div id="body">
+                <form action="/ProjectWEB/Home" method="POST" align="right">
                     <input type="text" name="username" value="" size="10"/>
-                    <input type="text" name="password" value="" size="10"/>
+                    <input type="password" name="password" value="" size="10"/>
                     <input type="submit" value="Login" name="login" />
                 </form>
+
+                <h2 align="center" style="font-family: Arial; font-size: 16pt;
+                    color: black">Daftar Mata Kuliah </h2>
+                <table border="1" cellpadding="2" width="800" align="center">
+                    <thead>
+                        <tr>
+                            <th>Kode Mata Kuliah</th>
+                            <th>Nama Mata Kuliah</th>
+                            <th>SKS</th>
+                            <th>Nama Dosen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (int i = 0; i < list.size(); i++) { %>
+                        <tr>
+                            <td><% out.println(list.get(i).getKode_matkul());%></td>
+                            <td><% out.println(list.get(i).getNama_matkul());%></td>
+                            <td><% out.println(list.get(i).getSks());%></td>
+                            <td><% out.println(list.get(i).getNama_dosen());%></td>
+                            <% }%>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="footer" >
+                <p>Universitas Sanata Dharma &COPY; 2016</p>
             </div>
         </div>
-        <br><br><br><br>
-        
-        <div class="main">
-            <table align="center" border="1" cellspacing="1" cellpadding="2">
-                <thead>
-                    <tr>
-                        <th>Kode Mata Kuliah</th>
-                        <th>Nama Mata Kuliah</th>
-                        <th>SKS</th>
-                        <th>Nama Dosen</th>
-                    </tr>
-                </thead>
-                <%for (int i = 0; i < 6; i++) {%>
-                <tbody>
-                    <tr>
-                        <td>null</td>
-                        <td>null</td>
-                        <td>null</td>
-                        <td>null</td>
-                    </tr>
-                </tbody>
-
-                <%}%>
-            </table>
-        </div>
-    </body>
 </html>
