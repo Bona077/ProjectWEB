@@ -1,43 +1,44 @@
+package Method;
 import java.sql.*;
 public class LoginStatus {
     Connection connection;
     DataBaseConnection database = new DataBaseConnection();
-    public LoginStatus(){
-        
-    }
-    public String LoginStat(String username, String password) throws SQLException{
-        String status=null;
+    
+    public String[] CekLogin(String username, String password) throws SQLException{
+        String[] data=new String[3];
         connection = null;
         PreparedStatement stmt;
         ResultSet resultSet;
-        connection = database.getConnection();
         try {
+            connection = database.getConnection();
             stmt = connection.prepareStatement("SELECT NIM, Password from MAHASISWA WHERE nim= ? and password= ?");
             stmt.setInt(1, Integer.parseInt(username));
             stmt.setString(2, password);
-            stmt.executeUpdate();
             resultSet = stmt.executeQuery();
-            if(resultSet.next()==true){
-                status="mahasiswa";
+            if(resultSet.next()){
+                data[0]=username;
+                data[1]=password;
+                data[2]="mahasiswa";
             }
-            
         }catch (SQLException | NumberFormatException e){
             
         }
         try{
+            connection = database.getConnection();
             stmt = connection.prepareStatement("SELECT KODE_DOSEN, Password from DOSEN "
                     + "WHERE KODE_DOSEN= ? and password= ?");
             stmt.setString(1, username);
             stmt.setString(2, password);
-            stmt.executeUpdate();
             resultSet = stmt.executeQuery();
             
-            if(resultSet.next()==true){
-                status="dosen";
+            if(resultSet.next()){
+                data[0]=username;
+                data[1]=password;
+                data[2]="admin";
             }
         }catch (SQLException e){
             
         }
-        return status;
+        return data;
     }
 }
