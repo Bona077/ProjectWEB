@@ -1,0 +1,24 @@
+Daftar isi file project
+-----------------------------------------
+
+package default (non-package):
+- Admin.java
+- KartuKRS.java
+- Logout.java 
+- Mahasiswa.java
+- TanpaLogin.java
+- Home
+
+package Method:
+- DatabaseConnection.java
+- LoginStatus.java
+- MahasiswaKrs.java
+- Matakuliah.java
+- MethodDosen.java
+- MethodKrs.java
+- MethodMahasiswa.java
+
+package Servlet (query):
+- Krs_Control.java
+- Mahasiswa_Contol.java
+- Mahasiswa_panggil.java
